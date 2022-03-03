@@ -4,7 +4,9 @@
     Author     : MeGa
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.db.ConnectionProvider"%>
+<%@page import="java.sql.Connection"%>
+<%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
     <head>

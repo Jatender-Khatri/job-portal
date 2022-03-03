@@ -1,0 +1,4 @@
+com\model\Jobs.class
+com\db\ConnectionProvider.class
+com\model\User.class
+com\servlet\LoginServlet.class

@@ -3,7 +3,8 @@
     Created on : Mar 1, 2022, 10:16:19 PM
     Author     : MeGa
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,6 +23,9 @@
         </style>
     </head>
     <body>
+        <c:if test="${userobj.role ne 'admin'}">
+            <c:redirect url="login.jsp"></c:redirect>
+        </c:if>
         <%@include file="all_components/navbar.jsp" %>
         <div class="container-fluid back-img">
             <div class="text-center">
