@@ -16,6 +16,18 @@
         <servlet-name>DeleteServlet</servlet-name>
         <servlet-class>com.servlet.DeleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>com.servlet.UpdateUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserCommentServlet</servlet-name>
+        <servlet-class>com.servlet.UserCommentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/UpdateUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserCommentServlet</servlet-name>
+        <url-pattern>/UserCommentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

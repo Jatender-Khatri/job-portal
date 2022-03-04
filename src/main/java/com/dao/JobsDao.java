@@ -69,6 +69,32 @@ public class JobsDao {
         return list;
     }
 
+    public List<Jobs> getAllJobsForUser() {
+        List<Jobs> list = new ArrayList<>();
+
+        try {
+            String sql = "select * from jobs where status=? order by id desc";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "Active");
+            ResultSet set = ps.executeQuery();
+            while (set.next()) {
+                Jobs j = new Jobs();
+                j.setCategory(set.getString("category"));
+                j.setDescription(set.getString("description"));
+                j.setId(set.getInt("id"));
+                j.setLocation(set.getString("location"));
+                j.setPdate(set.getTimestamp("pdate") + "");
+                j.setStatus(set.getString("status"));
+                j.setTitle(set.getString("title"));
+                list.add(j);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error : " + e.getMessage());
+        }
+        return list;
+    }
+
     public Jobs getJobById(Integer id) {
         Jobs j = new Jobs();
         try {
@@ -93,9 +119,9 @@ public class JobsDao {
         }
         return j;
     }
-    public boolean updateJob(Jobs j)
-    {
-         boolean f = false;
+
+    public boolean updateJob(Jobs j) {
+        boolean f = false;
         try {
             String insert = "update jobs set title=?, description=?, category=?, status=?, location=? where id = ?";
             PreparedStatement ps = con.prepareStatement(insert);
@@ -115,16 +141,15 @@ public class JobsDao {
         }
         return f;
     }
-    public boolean deleteJobs(Integer id)
-    {
+
+    public boolean deleteJobs(Integer id) {
         boolean f = false;
         try {
             String delete = "delete from jobs where id =?";
             PreparedStatement ps = con.prepareStatement(delete);
             ps.setInt(1, id);
             Integer roll = ps.executeUpdate();
-            if(roll==1)
-            {
+            if (roll == 1) {
                 f = true;
             }
         } catch (Exception e) {
@@ -132,5 +157,59 @@ public class JobsDao {
             System.out.println("Error : " + e.getMessage());
         }
         return f;
+    }
+
+    public List<Jobs> getJobsOrLocationAndCategory(String category, String location) {
+        List<Jobs> list = new ArrayList<>();
+        Jobs j = null;
+        try {
+            String sql = "select * from jobs where category=? or location=? order by id desc";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, category);
+            ps.setString(2, location);
+            ResultSet set = ps.executeQuery();
+            while (set.next()) {
+                j = new Jobs();
+                j.setCategory(set.getString("category"));
+                j.setDescription(set.getString("description"));
+                j.setId(set.getInt("id"));
+                j.setLocation(set.getString("location"));
+                j.setPdate(set.getTimestamp("pdate") + "");
+                j.setStatus(set.getString("status"));
+                j.setTitle(set.getString("title"));
+                list.add(j);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error : " + e.getMessage());
+        }
+        return list;
+    }
+
+    public List<Jobs> getJobsAndLocationAndCategory(String category, String location) {
+        List<Jobs> list = new ArrayList<>();
+        Jobs j = null;
+        try {
+            String sql = "select * from jobs where category=? and location=? order by id desc";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, category);
+            ps.setString(2, location);
+            ResultSet set = ps.executeQuery();
+            while (set.next()) {
+                j = new Jobs();
+                j.setCategory(set.getString("category"));
+                j.setDescription(set.getString("description"));
+                j.setId(set.getInt("id"));
+                j.setLocation(set.getString("location"));
+                j.setPdate(set.getTimestamp("pdate") + "");
+                j.setStatus(set.getString("status"));
+                j.setTitle(set.getString("title"));
+                list.add(j);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error : " + e.getMessage());
+        }
+        return list;
     }
 }

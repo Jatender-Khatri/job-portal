@@ -4,6 +4,8 @@
  */
 package com.servlet;
 
+import com.dao.UserDao;
+import com.db.ConnectionProvider;
 import com.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpSession;
  * @author MeGa
  */
 @WebServlet("/login")
-public class LoginServlet extends HttpServlet{
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,23 +34,35 @@ public class LoginServlet extends HttpServlet{
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         try {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             User u = new User();
             HttpSession session = request.getSession();
-            if("kumarjatender0@gmail.com".equals(email) && "jatender123".equals(password))
-            {
+            if ("kumarjatender0@gmail.com".equals(email) && "jatender123".equals(password)) {
                 session.setAttribute("userobj", u);
                 u.setRole("admin");
                 response.sendRedirect("admin.jsp");
+            } else {
+                UserDao dao = new UserDao(ConnectionProvider.getConnection());
+                User user = dao.loginUser(email, password);
+
+                if (user != null) {
+                    session.setAttribute("userobj", user);
+                    response.sendRedirect("home.jsp");
+                }
+                else
+                {
+                    session.setAttribute("succMsg", "Invalid Username or Password");
+                    response.sendRedirect("login.jsp");
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error : " + e.getMessage());
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

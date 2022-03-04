@@ -3,7 +3,8 @@
     Created on : Mar 1, 2022, 11:26:16 PM
     Author     : MeGa
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <%@page import="com.model.Jobs"%>
 <%@page import="java.util.List"%>
 <%@page import="com.db.ConnectionProvider"%>
@@ -25,7 +26,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center text-primary mt-3">All Jobs</h1>
+                    <div class="text-center text-success mt-3">
+                        <i class="fas fa-clipboard fa-3x"></i>
+
+                        <h1>All Jobs</h1>
+                    </div>
                     <c:if test="${not empty succMsg}">
                         <div class="container text-center">
                             <div class="alert alert-success" role="alert">

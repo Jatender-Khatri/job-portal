@@ -22,9 +22,18 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="text-center">
+                                <c:if test="${not empty succMsg}">
+                                    <div class="container text-center">
+                                        <div class="alert alert-success" role="alert">
+                                            ${succMsg}
+                                        </div>
+                                    </div>
+                                    <c:remove var="succMsg" />
+                                </c:if>
                                 <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
                                 <h5>Login</h5>
                             </div>
+
                             <form action="login" method="post">
                                 <div class="form-group">
                                     <label>Enter Email</label>
@@ -38,7 +47,7 @@
                             </form>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

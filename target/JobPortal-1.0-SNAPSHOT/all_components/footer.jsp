@@ -31,10 +31,10 @@
             <div class="footer-col">
                 <h4>follow us</h4>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/jatenderkhatr"><i class="fa fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/jatender-khatri/"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/jatenderkhatr"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/jatender-khatri/"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
