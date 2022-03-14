@@ -1,5 +1,5 @@
 # Job Portal
-A web app to manage your posts efficiently. This is my second project using jsp and servlet.
+A web app to manage your Jobs posts efficiently. This is my second project using jsp and servlet.
 ## Features
 - Admin and Normal both
 - Create, Update, View & Delete Jobs
